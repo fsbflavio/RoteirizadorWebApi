@@ -15,13 +15,11 @@ namespace Roteirizador.WebApi.Controllers
     [ApiController]
     public class RoutesController : ControllerBase
     {
-        private readonly RoterizadorContext _context;
         private readonly IUnitOfWork _unitOfWork;
 
-        public RoutesController(RoterizadorContext context)
+        public RoutesController(IUnitOfWork unitOfWork)
         {
-            _context = context;
-            _unitOfWork = new UnitOfWork(_context);
+            _unitOfWork = unitOfWork;
         }
 
         // GET: api/Routes

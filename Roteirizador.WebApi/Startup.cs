@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Roterizador.Domain.Repository;
 using Roterizador.EntityPostgres;
 
 namespace RoteirizadorWebApi
@@ -29,9 +30,17 @@ namespace RoteirizadorWebApi
         {
             services.AddControllers();
 
+            //var options = new DbContextOptionsBuilder<RoterizadorContext>();
+            //options.UseNpgsql(Configuration.GetConnectionString("RoterizadorDB"));
+
+            //var context = new RoterizadorContext(options.Options);
+
+
+
             services.AddDbContext<RoterizadorContext>(options =>
                options.UseNpgsql(Configuration.GetConnectionString("RoterizadorDB")));
 
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
