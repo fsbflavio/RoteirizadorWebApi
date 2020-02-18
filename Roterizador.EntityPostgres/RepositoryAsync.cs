@@ -9,30 +9,25 @@ using System.Threading.Tasks;
 
 namespace Roterizador.EntityPostgres
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class RepositoryAsync<TEntity> : IRepositoryAsync<TEntity> where TEntity : class
     {
         protected readonly DbContext Context;
         private readonly DbSet<TEntity> _entities;
 
-        public Repository(DbContext context)
+        public RepositoryAsync(DbContext context)
         {
             Context = context;
             _entities = Context.Set<TEntity>();
         }
 
-        public TEntity Get(int id)
+        public ValueTask<TEntity> GetAsync(int id)
         {
-            return _entities.Find(id);
+            return _entities.FindAsync(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public Task<List<TEntity>> GetAllAsync()
         {
-            return _entities.ToList();
-        }
-
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _entities.Where(predicate);
+            return _entities.ToListAsync();
         }
 
         public void Add(TEntity entity)
@@ -53,11 +48,6 @@ namespace Roterizador.EntityPostgres
         public int Count()
         {
             return _entities.Count();
-        }
-
-        public Task<List<TEntity>> GetAllAsync()
-        {
-            return _entities.ToListAsync();
         }
     }
 }

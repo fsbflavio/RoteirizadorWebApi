@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Roterizador.Domain.Repository
 {
-    public interface IReaderRepository<TEntity> where TEntity : class
+    public interface IUnitOfWork : IDisposable
     {
-        TEntity Get(int Id);
-        IEnumerable<TEntity> GetAll();
+        IRouteRepository Routes { get; }
+        Task<int> CompleteAsync();
     }
 }
