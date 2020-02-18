@@ -30,13 +30,6 @@ namespace RoteirizadorWebApi
         {
             services.AddControllers();
 
-            //var options = new DbContextOptionsBuilder<RoterizadorContext>();
-            //options.UseNpgsql(Configuration.GetConnectionString("RoterizadorDB"));
-
-            //var context = new RoterizadorContext(options.Options);
-
-
-
             services.AddDbContext<RoterizadorContext>(options =>
                options.UseNpgsql(Configuration.GetConnectionString("RoterizadorDB")));
 
@@ -54,6 +47,11 @@ namespace RoteirizadorWebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseAuthorization();
 

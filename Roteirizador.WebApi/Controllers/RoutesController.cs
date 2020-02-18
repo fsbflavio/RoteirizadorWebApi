@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Roteirizador.WebApi.Auth;
 using Roterizador.Domain.Model;
 using Roterizador.Domain.Repository;
 using Roterizador.EntityPostgres;
@@ -12,6 +13,7 @@ using Roterizador.EntityPostgres;
 namespace Roteirizador.WebApi.Controllers
 {
     [Route("api/[controller]")]
+    [BasicAuth]
     [ApiController]
     public class RoutesController : ControllerBase
     {
