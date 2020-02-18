@@ -2,7 +2,7 @@
 using Roterizador.Domain.Model;
 using Roterizador.Persistence.EntityConfigurations;
 
-namespace Roterizador.Persistence
+namespace Roterizador.EntityPostgres
 {
     public class RoterizadorContext : DbContext
     {

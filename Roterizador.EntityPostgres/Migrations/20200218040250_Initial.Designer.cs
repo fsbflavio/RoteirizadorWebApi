@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Roterizador.Persistence;
 
-namespace Roterizador.Persistence.Migrations
+namespace Roterizador.EntityPostgres.Migrations
 {
     [DbContext(typeof(RoterizadorContext))]
     [Migration("20200218040250_Initial")]

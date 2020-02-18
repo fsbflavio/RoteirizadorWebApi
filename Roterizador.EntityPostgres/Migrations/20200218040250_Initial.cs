@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Roterizador.Persistence.Migrations
+namespace Roterizador.EntityPostgres.Migrations
 {
     public partial class Initial : Migration
     {

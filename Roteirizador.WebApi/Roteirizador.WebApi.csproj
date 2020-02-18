@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Roterizador.Domain\Roterizador.Domain.csproj" />
-    <ProjectReference Include="..\Roterizador.Persistence\Roterizador.Persistence.csproj" />
+    <ProjectReference Include="..\Roterizador.EntityPostgres\Roterizador.EntityPostgres.csproj" />
   </ItemGroup>
 
 
