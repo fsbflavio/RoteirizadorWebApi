@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LocationSearchInput from '../LocationSearchInput';
 
-function FormInput({ onSubmit }) {
+function FormInput({ coordinates, setCoordinates, onSubmit }) {
     const [start_pin, setStartPin] = useState('');
     const [end_pin, setEndPin] = useState('');
    // const [latitude, setLatitude] = useState('');
@@ -25,12 +25,12 @@ function FormInput({ onSubmit }) {
         <form onSubmit={handleSubmit}>
             <div className="input-block">
                 <label htmlFor="start_pin">Origem:</label>
-                <LocationSearchInput/>
+                <LocationSearchInput coordinates={coordinates} setCoordinates={setCoordinates}/>
             </div>
 
             <div className="input-block">
                 <label htmlFor="end_pin">Parada:</label>
-                <LocationSearchInput/>
+                <LocationSearchInput coordinates={coordinates} setCoordinates={setCoordinates}/>
             </div>
             
             

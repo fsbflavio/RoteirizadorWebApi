@@ -1,79 +1,90 @@
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import React, { Component } from "react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 export class GMap extends Component {
-  constructor(props) {
-    super(props);
-    this.handleMapReady = this.handleMapReady.bind(this);
-  }
+  state = {
+    map: {}
+  };
 
-  displayMarkersStart = (routes) => {
-    return routes.map((route, index) => {
-      return <Marker key={route.id} id={route.id}
-        position={{
-          lat: route.start.latitude,
-          lng: route.start.longitude
-        }}
-        onClick={() => console.log("pin start " + route.id)} />
-    });
-  }
-
-  displayMarkersEnd = (routes) => {
-    return routes.map((route, index) => {
-      return <Marker key={route.id} id={route.id}
-        position={{
-          lat: route.end.latitude,
-          lng: route.end.longitude
-        }}
-        onClick={() => console.log("pin end " + route.id)} />
-    });
-  }
-
-  handleMapReady(mapProps, map) {
+  handleMapReady = (mapPros, map) => {
     this.calculateAndDisplayRoute(map);
-  }
+    this.setState({
+      map: map
+    });
+  };
 
   calculateAndDisplayRoute(map) {
+    const { coordinates } = this.props;
     const directionsService = new window.google.maps.DirectionsService();
     const directionsDisplay = new window.google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(null);
     directionsDisplay.setMap(map);
 
-    const route = this.props.route;
+    if (coordinates.length <= 1) return;
 
-    if (route == null)
-      return;
+    let origin;
+    if (coordinates.length === 2)
+      origin = { lat: coordinates[0].lat, lng: coordinates[0].lng };
+    else origin = { lat: coordinates[2].lat, lng: coordinates[2].lng };
 
-    const origin = { lat: route.start.latitude, lng: route.start.longitude };
-    const destination = { lat: route.end.latitude, lng: route.end.longitude };
+    const destination = {
+      lat: coordinates[1].lat,
+      lng: coordinates[1].lng
+    };
 
-    directionsService.route({
-      origin: origin,
-      destination: destination,
+    directionsService.route(
+      {
+        origin: origin,
+        destination: destination,
 
-      //waypoints: waypoints,
-      travelMode: 'DRIVING'
-    }, (response, status) => {
-      if (status === 'OK') {
-        directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
+        //waypoints: waypoints,
+        travelMode: "DRIVING"
+      },
+      (response, status) => {
+        if (status === "OK") {
+          console.log("chegou aqui");
+          directionsDisplay.setDirections(response);
+        } else {
+          window.alert("Directions request failed due to " + status);
+        }
       }
-    });
+    );
   }
 
+  handleClick = () => {
+    this.calculateAndDisplayRoute(this.state.map);
+  };
+
   render() {
+    const { coordinates } = this.props;
+
     return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        initialCenter={this.props.initialCenter}
-        onReady={this.handleMapReady}
-      >
-      </Map>
+      <div className="mapa">
+        <Map
+          google={this.props.google}
+          zoom={14}
+          initialCenter={this.props.initialCenter}
+          onReady={this.handleMapReady}
+          coordinates={coordinates}
+          styles={{ position: 'relative' }}
+        >
+          {coordinates.map((coord, index) => (
+            <Marker
+              key={index}
+              position={{
+                lat: coord.lat,
+                lng: coord.lng
+              }}
+              onClick={() => console.log("pin end " + 0)}
+            />
+          ))}
+        </Map>
+        <button onClick={this.handleClick}>adasdasd</button>
+      </div>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyA0QwxquhAjg-VKIAaY17JrOdy4EtXumVE'
+  apiKey: "AIzaSyA0QwxquhAjg-VKIAaY17JrOdy4EtXumVE"
 })(GMap);
