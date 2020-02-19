@@ -55,9 +55,15 @@ export class GMap extends Component {
     this.calculateAndDisplayRoute(this.state.map);
   };
 
+  
   render() {
     const { coordinates } = this.props;
 
+    const containerStyle = {
+      position: 'relative',  
+      width: '100%',
+      height: '100%'
+    }
     return (
       <div className="mapa">
         <Map
@@ -66,7 +72,7 @@ export class GMap extends Component {
           initialCenter={this.props.initialCenter}
           onReady={this.handleMapReady}
           coordinates={coordinates}
-          styles={{ position: 'relative' }}
+          style={containerStyle}
         >
           {coordinates.map((coord, index) => (
             <Marker
