@@ -7,7 +7,8 @@ namespace Roterizador.Domain.Model
     public class Route
     {
         public int Id { get; set; }
-        public Coordinate Start { get; set; }
-        public Coordinate End { get; set; }
+
+        public string Descricao { get; set; }
+        public ICollection<Coordinate> Coordinates { get; set; }
     }
 }

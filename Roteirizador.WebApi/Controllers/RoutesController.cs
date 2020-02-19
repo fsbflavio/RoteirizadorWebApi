@@ -62,8 +62,7 @@ namespace Roteirizador.WebApi.Controllers
                 return NotFound();
             }
 
-            routeInBd.Start = route.Start;
-            routeInBd.End = route.End;
+            routeInBd.Coordinates = route.Coordinates;
 
             await _unitOfWork.CompleteAsync();
 

@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Roterizador.Domain.Model;
 using Roterizador.Domain.Repository;
 using Roterizador.EntityPostgres;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Roterizador.IntegrationTests
@@ -32,18 +33,22 @@ namespace Roterizador.IntegrationTests
             var itemModel = new Route()
             {
                 Id = insertId,
-                Start = new Coordinate()
+                Descricao = "ROTA TESTE",
+                Coordinates = new List<Coordinate>()
                 {
-                    Id = insertId,
-                    Latitude = 28.45454f,
-                    Longitude = 35.4545f
-                },
-                End = new Coordinate()
-                {
-                    Id = insertId,
-                    Latitude = 30.45454f,
-                    Longitude = 32.4545f
-                },
+                    new Coordinate()
+                    {
+                        Id = insertId,
+                        Latitude = 28.45454f,
+                        Longitude = 35.4545f
+                    },
+                    new Coordinate()
+                    {
+                        Id = insertId + 1,
+                        Latitude = 30.45454f,
+                        Longitude = 32.4545f
+                    }
+                }
             };
 
             unitOfWork.Routes.Add(itemModel);

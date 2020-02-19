@@ -19,9 +19,7 @@ namespace Roterizador.EntityPostgres
         public Task<List<Route>> GetAllCompleteAsync(int pageIndex = 1, int pageSize = 10)
         {
             return roterizadorContext.Routes
-                .Include(i => i.Start)
-                .Include(i => i.End)
-                .OrderBy(s => s.Id)
+                .Include(i => i.Coordinates)
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();

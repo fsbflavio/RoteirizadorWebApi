@@ -18,6 +18,16 @@ namespace Roterizador.Persistence.EntityConfigurations
             builder.Property(e => e.Id)
                 .HasColumnName("ID_COORDINATE")
                 .IsRequired();
+
+            builder.Property(e => e.RouteId)
+                .HasColumnName("ID_ROUTE")
+                .IsRequired();
+
+            builder.Property(e => e.Longitude)
+                .HasColumnName("LONGITUDE");
+
+            builder.Property(e => e.Latitude)
+                .HasColumnName("LATITUDE");
         }
     }
 }
