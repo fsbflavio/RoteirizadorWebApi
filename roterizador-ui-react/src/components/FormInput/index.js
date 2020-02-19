@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import SearchBar from '../SearchBar';
+import LocationSearchInput from '../LocationSearchInput';
 
 function FormInput({ onSubmit }) {
     const [start_pin, setStartPin] = useState('');
@@ -25,23 +25,14 @@ function FormInput({ onSubmit }) {
         <form onSubmit={handleSubmit}>
             <div className="input-block">
                 <label htmlFor="start_pin">Origem:</label>
-                <input
-                    name="start_pin"
-                    id="start_pin"
-                    required
-                    value={start_pin}
-                    onChange={e => setStartPin(e.target.value)} />
+                <LocationSearchInput/>
             </div>
 
             <div className="input-block">
                 <label htmlFor="end_pin">Parada:</label>
-                <input
-                    name="end_pin"
-                    id="end_pin"
-                    required
-                    value={end_pin}
-                    onChange={e => setEndPin(e.target.value)} />
+                <LocationSearchInput/>
             </div>
+            
             
 
             <button type="submit">Roterizar</button>

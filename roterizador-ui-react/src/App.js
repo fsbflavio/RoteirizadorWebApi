@@ -7,7 +7,7 @@ import { API_PATH } from "./services/api";
 import './global.css'
 import './App.css'
 import './Sidebar.css'
-import SearchBar from './components/SearchBar';
+//import LocationSearchInput from './components/LocationSearchInput';
 //import './Main.css'
 
 function App() {
