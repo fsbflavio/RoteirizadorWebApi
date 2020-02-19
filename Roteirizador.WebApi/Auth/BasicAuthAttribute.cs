@@ -8,10 +8,9 @@ namespace Roteirizador.WebApi.Auth
 {
     public class BasicAuthAttribute : TypeFilterAttribute
     {
-        public BasicAuthAttribute(string realm = @"Full Access") 
+        public BasicAuthAttribute() 
             : base(typeof(BasicAuthFilter))
         {
-            Arguments = new object[] { realm };
         }
     }
 }

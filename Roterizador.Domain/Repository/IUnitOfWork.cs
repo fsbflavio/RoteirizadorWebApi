@@ -9,5 +9,11 @@ namespace Roterizador.Domain.Repository
     {
         IRouteRepository Routes { get; }
         Task<int> CompleteAsync();
+
+        void BeginTransaction();
+
+        void Commit();
+
+        void Rollback();
     }
 }

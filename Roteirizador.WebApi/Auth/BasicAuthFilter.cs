@@ -12,15 +12,8 @@ namespace Roteirizador.WebApi.Auth
 {
     public class BasicAuthFilter : IAuthorizationFilter
     {
-        private readonly string _realm;
-
-        public BasicAuthFilter(string realm)
+        public BasicAuthFilter()
         {
-            _realm = realm;
-            if (string.IsNullOrWhiteSpace(_realm))
-            {
-                throw new ArgumentNullException(nameof(realm), @"Please provide a non-empty realm value.");
-            }
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -62,7 +55,7 @@ namespace Roteirizador.WebApi.Auth
         private void ReturnUnauthorizedResult(AuthorizationFilterContext context)
         {
             // Return 401 and a basic authentication challenge (causes browser to show login dialog)
-            context.HttpContext.Response.Headers["WWW-Authenticate"] = $"Basic realm=\"{_realm}\"";
+            context.HttpContext.Response.Headers["WWW-Authenticate"] = $"Basic ";
             context.Result = new UnauthorizedResult();
         }
     }
