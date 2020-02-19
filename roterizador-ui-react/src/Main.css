@@ -1,0 +1,9 @@
+main {
+    flex: 1;
+}
+
+@media (max-width: 650px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}

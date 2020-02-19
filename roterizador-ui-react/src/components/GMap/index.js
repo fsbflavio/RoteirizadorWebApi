@@ -1,36 +1,79 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-import { Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+export class GMap extends Component {
+  constructor(props) {
+    super(props);
+    this.handleMapReady = this.handleMapReady.bind(this);
+  }
 
-class GMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: -23.4275806,
-      lng: -51.9077211
-    },
-    zoom: 14
-  };
+  displayMarkersStart = (routes) => {
+    return routes.map((route, index) => {
+      return <Marker key={route.id} id={route.id}
+        position={{
+          lat: route.start.latitude,
+          lng: route.start.longitude
+        }}
+        onClick={() => console.log("pin start " + route.id)} />
+    });
+  }
+
+  displayMarkersEnd = (routes) => {
+    return routes.map((route, index) => {
+      return <Marker key={route.id} id={route.id}
+        position={{
+          lat: route.end.latitude,
+          lng: route.end.longitude
+        }}
+        onClick={() => console.log("pin end " + route.id)} />
+    });
+  }
+
+  handleMapReady(mapProps, map) {
+    this.calculateAndDisplayRoute(map);
+  }
+
+  calculateAndDisplayRoute(map) {
+    const directionsService = new window.google.maps.DirectionsService();
+    const directionsDisplay = new window.google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+
+    const route = this.props.route;
+
+    if (route == null)
+      return;
+
+    const origin = { lat: route.start.latitude, lng: route.start.longitude };
+    const destination = { lat: route.end.latitude, lng: route.end.longitude };
+
+    directionsService.route({
+      origin: origin,
+      destination: destination,
+
+      //waypoints: waypoints,
+      travelMode: 'DRIVING'
+    }, (response, status) => {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
 
   render() {
     return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyA0QwxquhAjg-VKIAaY17JrOdy4EtXumVE',
-          language: 'pt-br' }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        >
-          <Marker
-            lat={-23.4275806}
-            lng={-51.9077211}
-          />
-        </GoogleMapReact>
-      </div>
+      <Map
+        google={this.props.google}
+        zoom={14}
+        initialCenter={this.props.initialCenter}
+        onReady={this.handleMapReady}
+      >
+      </Map>
     );
   }
 }
 
-export default GMap;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyA0QwxquhAjg-VKIAaY17JrOdy4EtXumVE'
+})(GMap);
