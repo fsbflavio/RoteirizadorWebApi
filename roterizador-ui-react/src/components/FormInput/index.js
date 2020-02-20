@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LocationSearchInput from '../LocationSearchInput';
+import calculateAndDisplayRoute from "../../services/calculateAndDisplayRoute";
 
-function FormInput({ coordinates, setCoordinates, onSubmit }) {
-    const [start_pin, setStartPin] = useState('');
-    const [end_pin, setEndPin] = useState('');
-   // const [latitude, setLatitude] = useState('');
-    //const [longitude, setLongitude] = useState('');
-
+function FormInput({ coordinates, setCoordinates, map, onSubmit }) {
+    
+    function handleClick () {
+        setCoordinates([]);
+        calculateAndDisplayRoute(map, coordinates);
+      };
+    
     async function handleSubmit(e) {
         e.preventDefault();
 
-        await onSubmit({
-            start_pin,
-            end_pin,
-           // latitude,
-           // longitude,
-        });
+        //save in bd
 
-        setStartPin('');
-        setEndPin('');
     }
 
     return (
@@ -32,10 +27,8 @@ function FormInput({ coordinates, setCoordinates, onSubmit }) {
                 <label htmlFor="end_pin">Parada:</label>
                 <LocationSearchInput coordinates={coordinates} setCoordinates={setCoordinates}/>
             </div>
-            
-            
 
-            <button type="submit">Roterizar</button>
+            <button type="submit" onClick={handleClick} >Roterizar</button>
         </form>
     );
 }

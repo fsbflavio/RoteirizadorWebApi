@@ -4,6 +4,8 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 
+
+
 export default function LocationSearchInput({ coordinates, setCoordinates }) {
   const [address, setAddress] = React.useState("");
 
