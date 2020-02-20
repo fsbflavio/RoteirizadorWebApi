@@ -1,9 +1,17 @@
 # Sobre
 Um simples roterizador com frontend em React e backend em .Net Core
 
-## Telas
+## Tela
 Abaixo a interface do roterizador no navegador:
 ![Image of the desktop view](https://github.com/fsbflavio/RoterizadorWebApi/raw/master/roterizador-view-desktop.jpg)
+
+## Tecnologias utilizadas
+### Frontend:
+Utilizado React com uso da das seguintes apis do google  
+[Directions API](https://developers.google.com/maps/documentation/directions/start?hl=pt_BR)  
+[Geocoding API](https://developers.google.com/maps/documentation/geocoding/start?hl=pt_BR)  
+[Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial?hl=pt_BR)  
+[Places API](https://developers.google.com/places/web-service/intro?hl=pt_BR)
 
 ## Instruções para execução
 ### Frontend:
