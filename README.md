@@ -7,11 +7,14 @@ Abaixo a interface do roterizador no navegador:
 
 ## Tecnologias utilizadas
 ### Frontend:
-Utilizado React com uso da das seguintes apis do google  
+Utilizado React com a biblioteca [https://github.com/fullstackreact/google-maps-react] que faz uso das das seguintes apis do google  
 [Directions API](https://developers.google.com/maps/documentation/directions/start?hl=pt_BR)  
 [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start?hl=pt_BR)  
 [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial?hl=pt_BR)  
 [Places API](https://developers.google.com/places/web-service/intro?hl=pt_BR)
+
+### Backend:
+API REST utilizando .Net core 3.1 conectado com banco de dados PostgreSQL via EntityFrameworkCore.
 
 ## Instruções para execução
 ### Frontend:
