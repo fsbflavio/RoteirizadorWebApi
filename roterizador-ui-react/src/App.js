@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import GMap from "./components/GMap";
 import { FormInput } from "./components/FormInput";
-import loadSavedRoutes from "./services/loadSavedRoutes";
+//import loadSavedRoutes from "./services/loadSavedRoutes";
 
 import "./global.css";
 import "./App.css";
@@ -17,7 +17,7 @@ function App() {
   const [propsRoute, setpropsRoute] = React.useState({});
   
   useEffect(() => {
-    loadSavedRoutes();
+    //loadSavedRoutes();
 
     navigator.geolocation.getCurrentPosition(
       position => {

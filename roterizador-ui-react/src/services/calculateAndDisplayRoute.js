@@ -1,6 +1,13 @@
+//import {directionsDisplay} from './utils';
+
+
+
 function calculateAndDisplayRoute(map, coordinates, setpropsRoute) {
   const directionsService = new window.google.maps.DirectionsService();
   const directionsDisplay = new window.google.maps.DirectionsRenderer();
+
+  console.log(directionsDisplay);
+
   directionsDisplay.setMap(null);
   directionsDisplay.setMap(map);
 

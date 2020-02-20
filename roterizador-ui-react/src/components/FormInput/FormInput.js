@@ -16,7 +16,7 @@ function FormInput({
   async function handleSubmit(e) {
     e.preventDefault();
 
-    //saveRoute(coordinates);
+    saveRoute(coordinates);
     calculateAndDisplayRoute(map, coordinates, setpropsRoute);
   }
 
@@ -33,6 +33,7 @@ function FormInput({
             setCoordinates={setCoordinates}
             label={label}
             index={index}
+            key={index}
           />
         ))}
 
@@ -46,7 +47,7 @@ function FormInput({
       </form>
       {propsRoute.distancia && (
         <div className="atributos-rotas">
-          <span> <b>Distância: </b>{propsRoute.distancia / 1000} km </span>
+          <span> <b>Distância: </b>{(propsRoute.distancia / 1000).toFixed(2)} km </span>
           <span> <b>Tempo Estimado: </b>{(propsRoute.tempo / 3600).toFixed(2)} horas </span>
         </div>
       )}
