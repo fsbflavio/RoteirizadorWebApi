@@ -11,16 +11,19 @@ Para a construção do roteirizador, poderão ser utilizadas quaisquer ferrament
 ## Instruções para execução
 ### Frontend:
 Apos baixar o projeto acessar a pasta roterizador-ui-react e executar na ordem:  
-`npm install` 
+`npm install`  
 `npm start`
 
 *O frontend pode ser executado sem o backend, o roteamento funcionara normalmente, apenas não serão salvas as rotas.
 
 ### Backend:
+-Instalar o banco de Dados Postgres
 -Apos baixar o projeto abrir a solução Roteirizador.WebApi.sln no VisualStudio.  
 -Compilar a solução  
 -Executar no Package Manager Console o comando abaixo para criar o banco de dados.  
-`Update-Database`  
+`Update-Database`
+
+*É necessario ter o SGBD PostgreSQL instalado na maquina. o PostgreSQL pode ser obtido gratuitamente [aqui](https://www.postgresql.org/download/)
 
 *Se o banco ja estiver criado é possivel executar diretamente via linha de comando:  
 `dotnet restore`  
