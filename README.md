@@ -17,6 +17,7 @@ Apos baixar o projeto acessar a pasta roterizador-ui-react e executar na ordem:
 -Instalar o banco de Dados Postgres
 -Apos baixar o projeto abrir a solução Roteirizador.WebApi.sln no VisualStudio.  
 -Compilar a solução  
+-alterar a string de conexao com o banco de dados no arquivo 
 -Executar no Package Manager Console o comando abaixo para criar o banco de dados.  
 `Update-Database`
 
@@ -28,4 +29,4 @@ Apos baixar o projeto acessar a pasta roterizador-ui-react e executar na ordem:
 `dotnet run`  
 
 ## Demo
-Demonstração da aplicação em execução sem o backend[Demo]()
+Demonstração da aplicação em execução sem o backend esta disponivel [aqui](https://roteirizador-react.azurewebsites.net/)
