@@ -40,4 +40,4 @@ Apos baixar o projeto acessar a pasta roterizador-ui-react e executar na ordem:
 `dotnet run`  
 
 ## Demo
-Demonstração da aplicação em execução sem o backend está disponível [aqui](https://roteirizador-react.azurewebsites.net/)
+Demonstração da aplicação em execução sem o backend está disponível [aqui](https://roteirizadorwebapp.z22.web.core.windows.net)
