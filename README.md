@@ -7,7 +7,7 @@ Abaixo a interface do roteirizador no navegador:
 
 ## Tecnologias utilizadas
 ### Frontend:
-Utilizado React com a biblioteca [https://github.com/fullstackreact/google-maps-react] e fazendo o uso das seguintes apis do Google:   
+Utilizado React com a biblioteca [google-maps-react](https://github.com/fullstackreact/google-maps-react) e fazendo o uso das seguintes apis do Google:   
 [Directions API](https://developers.google.com/maps/documentation/directions/start?hl=pt_BR)  
 [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start?hl=pt_BR)  
 [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial?hl=pt_BR)  
