@@ -32,6 +32,9 @@ namespace RoteirizadorWebApi
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
+            services.AddSwaggerGen(c =>
+                c.SwaggerDoc(name: "v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Roteirizador API", Version = "v1" }));
+
             services.AddDbContext<RoterizadorContext>(options =>
                options.UseNpgsql(Configuration.GetConnectionString("RoterizadorDB")));
 
@@ -45,6 +48,10 @@ namespace RoteirizadorWebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "Roteirizador API v1"));
 
             app.UseHttpsRedirection();
 
