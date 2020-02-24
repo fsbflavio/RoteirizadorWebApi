@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Roterizador.Domain\Roterizador.Domain.csproj" />
+    <ProjectReference Include="..\Roteirizador.Domain\Roteirizador.Domain.csproj" />
   </ItemGroup>
 
 </Project>
