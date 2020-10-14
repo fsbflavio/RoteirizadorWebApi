@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roterizador.Domain", "Roterizador.Domain\Roterizador.Domain.csproj", "{FC2D33DE-0A29-4B99-804F-AC563061AE16}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roteirizador.WebApi", "Roteirizador.WebApi\Roteirizador.WebApi.csproj", "{2D017BA8-CEFC-43FE-B012-2FE70FAAB3D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roterizador.EntityPostgres", "Roterizador.EntityPostgres\Roterizador.EntityPostgres.csproj", "{3CC047C6-7151-4878-B167-2E76213B3AA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roteirizador.IntegrationTests", "Roteirizador.IntegrationTests\Roteirizador.IntegrationTests.csproj", "{B0C3A6BC-83DD-4352-B704-CEE190801F5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roterizador.IntegrationTests", "Roterizador.IntegrationTests\Roterizador.IntegrationTests.csproj", "{E18E0CC6-3EBC-439D-9D53-F158FE526B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roteirizador.Domain", "Roteirizador.Domain\Roteirizador.Domain.csproj", "{13EBC128-544A-4F81-825B-FF5621CCA7F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roteirizador.EntityPostgres", "Roteirizador.EntityPostgres\Roteirizador.EntityPostgres.csproj", "{9AA729A6-67DE-4A83-BEA7-F6C2537A3355}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC2D33DE-0A29-4B99-804F-AC563061AE16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC2D33DE-0A29-4B99-804F-AC563061AE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC2D33DE-0A29-4B99-804F-AC563061AE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC2D33DE-0A29-4B99-804F-AC563061AE16}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D017BA8-CEFC-43FE-B012-2FE70FAAB3D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D017BA8-CEFC-43FE-B012-2FE70FAAB3D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D017BA8-CEFC-43FE-B012-2FE70FAAB3D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D017BA8-CEFC-43FE-B012-2FE70FAAB3D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3CC047C6-7151-4878-B167-2E76213B3AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CC047C6-7151-4878-B167-2E76213B3AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CC047C6-7151-4878-B167-2E76213B3AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CC047C6-7151-4878-B167-2E76213B3AA7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E18E0CC6-3EBC-439D-9D53-F158FE526B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E18E0CC6-3EBC-439D-9D53-F158FE526B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E18E0CC6-3EBC-439D-9D53-F158FE526B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E18E0CC6-3EBC-439D-9D53-F158FE526B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0C3A6BC-83DD-4352-B704-CEE190801F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0C3A6BC-83DD-4352-B704-CEE190801F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0C3A6BC-83DD-4352-B704-CEE190801F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0C3A6BC-83DD-4352-B704-CEE190801F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13EBC128-544A-4F81-825B-FF5621CCA7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13EBC128-544A-4F81-825B-FF5621CCA7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13EBC128-544A-4F81-825B-FF5621CCA7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13EBC128-544A-4F81-825B-FF5621CCA7F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AA729A6-67DE-4A83-BEA7-F6C2537A3355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AA729A6-67DE-4A83-BEA7-F6C2537A3355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AA729A6-67DE-4A83-BEA7-F6C2537A3355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AA729A6-67DE-4A83-BEA7-F6C2537A3355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

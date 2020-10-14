@@ -47,8 +47,14 @@ aside form .input-block input {
     border-bottom: 1px solid #eee;
 }
 
+aside form .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 aside form button[type=submit] {
-    width: 100%;
+    width: 80%;
     border: 0;
     margin-top: 30px;
     background: #04a045;
@@ -63,4 +69,34 @@ aside form button[type=submit] {
 
 aside form button[type=submit]:hover {
     background: #08813b;
+}
+
+aside form button[type=button] {
+    width: 18%;
+    border: 0;
+    margin-top: 30px;
+    background: #04a045;
+    border-radius: 2px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+aside form button[type=button]:hover {
+    background: #08813b;
+}
+
+aside .atributos-rotas
+{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+aside .atributos-rotas span
+{
+    margin-top: 10px;
 }
