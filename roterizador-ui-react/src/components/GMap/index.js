@@ -56,5 +56,5 @@ export class GMap extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyA0QwxquhAjg-VKIAaY17JrOdy4EtXumVE"
+  apiKey:`${process.env.REACT_APP_GDRIVE_TOKEN}`
 })(GMap);
