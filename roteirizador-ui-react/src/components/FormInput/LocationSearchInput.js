@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
 
-export default function LocationSearchInput({ coordinates, setCoordinates, label, initialAdress = "", index }) {
-  const [address, setAddress] = React.useState(initialAdress);
+export default function LocationSearchInput({ coordinates, setCoordinates, label, index }) {
+  const [address, setAddress] = useState(label.address);
+
 
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
@@ -16,7 +17,7 @@ export default function LocationSearchInput({ coordinates, setCoordinates, label
 
   return (
     <div className="input-block">
-      <label htmlFor="start_pin">{label}</label>
+      <label htmlFor="start_pin">{label.label}</label>
 
       <PlacesAutocomplete
         value={address}
