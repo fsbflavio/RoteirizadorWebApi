@@ -4,14 +4,14 @@ import PlacesAutocomplete, {
   getLatLng
 } from "react-places-autocomplete";
 
-export default function LocationSearchInput({ coordinates, setCoordinates, label, index }) {
-  const [address, setAddress] = React.useState("");
+export default function LocationSearchInput({ coordinates, setCoordinates, label, initialAdress = "", index }) {
+  const [address, setAddress] = React.useState(initialAdress);
 
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setAddress(value);
-    setCoordinates([...coordinates.slice(0, index), latLng, ...coordinates.slice(index +1, coordinates.length)]);
+    setCoordinates([...coordinates.slice(0, index), latLng, ...coordinates.slice(index + 1, coordinates.length)]);
   };
 
   return (
@@ -33,13 +33,14 @@ export default function LocationSearchInput({ coordinates, setCoordinates, label
             <div>
               {loading ? <div>...loading</div> : null}
 
-              {suggestions.map(suggestion => {
+              {suggestions.map((suggestion, index) => {
                 const style = {
                   backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
                 };
 
                 return (
-                  <div {...getSuggestionItemProps(suggestion, { style })}>
+                  <div
+                    {...getSuggestionItemProps(suggestion, { style })} key={index}>
                     {suggestion.description}
                   </div>
                 );
