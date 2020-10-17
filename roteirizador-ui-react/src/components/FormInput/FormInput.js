@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { GoogleApiWrapper} from "google-maps-react";
+import { GoogleApiWrapper } from "google-maps-react";
 
 import { LocationSearchInput } from "./";
 import calculateAndDisplayRoute from "../../services/calculateAndDisplayRoute";
+import getCoordenatesFromAddress from '../../services/getCoordenatesFromAddress';
+
 //import saveRoute from "../../services/saveRoute";
 
 function FormInput({
@@ -17,22 +19,20 @@ function FormInput({
   useEffect(() => {
     let initAdresses = [{ label: "Origem", address: "" }, { label: "Parada", address: "" }];
     const url = new URL(window.location.href);
-    if (url.search.includes("?adresses/")) {
-      const addressesUrl = url.search.replace("?adresses/", "");
+    const keyToAddres = "?addresses/";
+    if (url.search.includes(keyToAddres)) {
+      const addressesUrl = url.search.replace(keyToAddres, "").replace("%20", " ");
       const enderecos = addressesUrl.split("/")
 
       const lab = enderecos.map((endereco, index) => {
-        if (index === 0)
-        {
+        if (index === 0) {
           return { label: "Origem", address: endereco }
         }
 
         return { label: "Parada", address: endereco }
       });
 
-      console.log(lab);
       initAdresses = lab;
-      //setlabels(lab);
     }
     setlabels(initAdresses);
 
@@ -41,7 +41,16 @@ function FormInput({
   async function handleSubmit(e) {
     e.preventDefault();
 
-    //saveRoute(coordinates);
+    if (coordinates.length <= 0) {
+      const listAddr = labels.map(async (addr) => (
+        await getCoordenatesFromAddress(addr.address)
+      ));
+
+      const cords = await Promise.all(listAddr);
+      setCoordinates(cords);
+      calculateAndDisplayRoute(map, cords, setpropsRoute);
+      return;
+    }
     calculateAndDisplayRoute(map, coordinates, setpropsRoute);
   }
 
@@ -82,5 +91,5 @@ function FormInput({
 
 //export default FormInput;
 export default GoogleApiWrapper({
-  apiKey:`${process.env.REACT_APP_GDRIVE_TOKEN}`
+  apiKey: `${process.env.REACT_APP_GDRIVE_TOKEN}`
 })(FormInput);
