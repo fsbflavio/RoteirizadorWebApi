@@ -9,7 +9,7 @@ function calculateAndDisplayRoute(map, coordinates, setpropsRoute) {
 
   const waypoints = coordinates.map(coord => ({
     location: { lat: coord.lat, lng: coord.lng },
-    stopover: true
+    stopover: false
   }));
 
   const origin = waypoints.shift().location;
@@ -19,6 +19,7 @@ function calculateAndDisplayRoute(map, coordinates, setpropsRoute) {
     {
       origin: origin,
       destination: destination,
+      optimizeWaypoints: true, //BEST ROUTE
 
       waypoints: waypoints,
       travelMode: "DRIVING"

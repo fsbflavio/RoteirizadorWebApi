@@ -21,7 +21,7 @@ function FormInput({
     const url = new URL(window.location.href);
     const keyToAddres = "?addresses/";
     if (url.search.includes(keyToAddres)) {
-      const addressesUrl = url.search.replace(keyToAddres, "").replace("%20", " ");
+      const addressesUrl = decodeURI(url.search.replace(keyToAddres, ""));//.replaceAll("%20", " ");
       const enderecos = addressesUrl.split("/")
 
       const lab = enderecos.map((endereco, index) => {
@@ -42,16 +42,35 @@ function FormInput({
     e.preventDefault();
 
     if (coordinates.length <= 0) {
-      const listAddr = labels.map(async (addr) => (
-        await getCoordenatesFromAddress(addr.address)
-      ));
+      let cords = await getCoordnates();
+      console.log(cords);
 
-      const cords = await Promise.all(listAddr);
       setCoordinates(cords);
       calculateAndDisplayRoute(map, cords, setpropsRoute);
+      //setCoordinates([]);
       return;
     }
     calculateAndDisplayRoute(map, coordinates, setpropsRoute);
+  }
+
+  async function getCoordnates() {
+    let cords = labels.map(async (addr, index) => {
+      let latLong;
+      try {
+        latLong = await getCoordenatesFromAddress(addr.address);
+        return latLong;
+      }
+      catch (ex) {
+        if (ex === "OVER_QUERY_LIMIT") {
+          console.log("erro: " + ex);
+          await new Promise(r => setTimeout(r, 650 * index));
+          latLong = await getCoordenatesFromAddress(addr.address);
+          return latLong;
+        }
+      }
+      //cords.unshift(latLong);
+    });
+    return Promise.all(cords);
   }
 
   function handlerAddParada(text) {
