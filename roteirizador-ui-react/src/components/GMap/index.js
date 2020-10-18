@@ -42,10 +42,10 @@ export class GMap extends Component {
           {coordinates.map((coord, index) => (
             <Marker
               key={index}
-              position={{
-                lat: coord.lat,
-                lng: coord.lng
-              }}
+              // position={{
+              //   lat: coord.lat,
+              //   lng: coord.lng
+              // }}
               onClick={() => console.log("pin end " + 0)}
             />
           ))}
